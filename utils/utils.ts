@@ -25,7 +25,7 @@ export const setDate = (day: number, month: string, year: number): IsetDate => {
 
   return {
     day: day,
-    ordinalOfDay: getOrdinal(day),
+    ordinalDay: getOrdinal(day),
     month: month,
     year: year
   }

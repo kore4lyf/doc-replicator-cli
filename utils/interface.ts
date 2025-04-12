@@ -1,7 +1,7 @@
 
 export interface IsetDate {
   day: number,
-  ordinalOfDay: string,
+  ordinalDay: string,
   month: string,
   year: number
 }

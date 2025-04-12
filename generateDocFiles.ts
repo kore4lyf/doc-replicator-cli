@@ -2,8 +2,7 @@ import * as fs from "fs"
 import * as path from "path"
 import { IheaderIndex, IsetDate } from "./utils/interface"
 import { getTemplatePaths } from "./getTemplatePaths"
-
-const createReport = require("docx-templates")
+import { createReport } from "docx-templates"
 
 export const generateDocFiles = async (date: IsetDate, outputPaths: {[key:string]: string}, headerIndex: IheaderIndex, data: string[][]) => {
   
@@ -15,11 +14,12 @@ export const generateDocFiles = async (date: IsetDate, outputPaths: {[key:string
       row[headerIndex["full name"]] === null ||
       row[headerIndex["full name"]] === undefined) break
     
-    console.log(index, " ", row[headerIndex["full name"]]) // 1 Tope Adewale
+    console.log(index + 1, " ", row[headerIndex["full name"]]) // 1 Tope Adewale
 
     const propertyType = row[headerIndex["property type"]]
 
-    for(const templatePath of getTemplatePaths(propertyType)) {
+    for(const [index, templatePath] of getTemplatePaths(propertyType).entries()) {
+      console.log(templatePath)
 
       // Load the DOCX file
       const template = fs.readFileSync(templatePath)

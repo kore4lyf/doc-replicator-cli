@@ -45,7 +45,7 @@ var setDate = function (day, month, year) {
     };
     return {
         day: day,
-        ordinalOfDay: getOrdinal(day),
+        ordinalDay: getOrdinal(day),
         month: month,
         year: year
     };
