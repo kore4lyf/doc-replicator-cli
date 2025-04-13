@@ -46,3 +46,4 @@ try {
 } catch(error) {
   console.log("Error generating report: ", error)
 }
+
