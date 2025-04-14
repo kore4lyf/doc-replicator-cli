@@ -48,8 +48,8 @@ This tool was specifically built to automate the creation of real estate related
 2.  **Prepare Your Template:**
     * Create a DOCX template with placeholders (e.g., `{{propertyName}}`, `{{address}}`) for the data from your Excel file.
 
-3.  **Configure `main.ts`:**
-    * Open the `src/main.ts` file and modify the following variables:
+3.  **Configure `index.ts`:**
+    * Open the `src/index.ts` file and modify the following variables:
         * `xlsFilename`: The path to your Excel file.
         * `outputDirectory`: The directory where generated files will be saved.
         * Adjust other variables as needed to match your data and template.
@@ -58,8 +58,7 @@ This tool was specifically built to automate the creation of real estate related
 4.  **Run the Application:**
 
     ```sh
-    tsc main.ts --downlevelIteration
-    node main.js
+    npx tsx index.js
     ```
 
     * This executes the script, generating documents based on your template and data.

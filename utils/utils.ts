@@ -1,15 +1,12 @@
 import * as fs from "fs"
 import { IsetDate } from "./interface"
 
-export const createFoldersIfNotExist = (folderPaths: string[]) => {
-  for (let path of folderPaths) {
-
-    if (!fs.existsSync(path)) {
-      fs.mkdirSync(path, { recursive: true })
-      console.log(`Folder created at: ${path}`)
-    } else {
-      console.log(`Folder already exists at: ${path}`)
-    }
+export const createFolderIfNotExist = (folderPath: string) => {
+  if (!fs.existsSync(folderPath)) {
+    fs.mkdirSync(folderPath, { recursive: true })
+    console.log(`Folder created at: ${folderPath}`)
+  } else {
+    console.log(`Folder already exists at: ${folderPath}`)
   }
 }
 
