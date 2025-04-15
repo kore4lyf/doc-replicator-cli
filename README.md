@@ -11,6 +11,14 @@ Document Replicator CLI is a command-line tool designed to automate the generati
 * **Time Efficiency:** Reduces hours of manual document creation to minutes.
 * **Local Execution:** Operates locally on your computer, ensuring data privacy.
 
+## Future Improvements
+
+- [ ] Use only one template for to generate, both stamped and unstamped documents
+  **Some attempts have been made to implement this feature, but the docx-template IF statement does not currently work well within a textbox**
+
+- [ ] Build a User interface on the solution
+
+
 ## Use Case (Real Estate Specific)
 
 This tool was specifically built to automate the creation of real estate related documents, such as property valuation reports, based on information stored in an excel sheet.
