@@ -8,8 +8,12 @@ export const generateDocFiles = async (
   date: IsetDate, 
   outputPath: string, 
   imagePath: {[key: string]: string},
+  renderImages: boolean,
   headerIndex: IheaderIndex, 
   data: string[][]) => {
+
+    console.log(renderImages)
+    console.log(imagePath)
   
   // Create the reports from data
   for(const [index, row] of data.entries() ) {
@@ -25,7 +29,7 @@ export const generateDocFiles = async (
 
 
     
-    const templatePath: string = getTemplatePath(propertyType)
+    const templatePath: string = getTemplatePath(propertyType, renderImages)
 
     console.log(templatePath)
 
@@ -34,6 +38,7 @@ export const generateDocFiles = async (
 
     // Match data to placeholder
     const rowData = {
+      renderImages: "",
       fullName: row[headerIndex["full name"]],
       houseNumber: row[headerIndex["house number"]],
       customerAddress: row[headerIndex["customer address"]],
@@ -45,38 +50,38 @@ export const generateDocFiles = async (
         }
       },
       dateImg: {
-        data: fs.readFileSync(imagePath.dateImg, {encoding: "base64"}),
+        data:  renderImages ? fs.readFileSync(imagePath.dateImg, {encoding: "base64"}) : imagePath.dateImg,
         width: 2.7,
         height: 1.2,
         extension: ".png"
       },
       signature: {
-        data: fs.readFileSync(imagePath.signature, {encoding: "base64"}),
+        data: renderImages ? fs.readFileSync(imagePath.signature, {encoding: "base64"}) : imagePath.signature,
         width: 5.85,
         height: 1.43,
         extension: ".png"
       },
       smSignature: {
-        data: fs.readFileSync(imagePath.signature, {encoding: "base64"}),
+        data: renderImages ? fs.readFileSync(imagePath.signature, {encoding: "base64"}) : imagePath.signature,
         width: 4.5,
         height: 1.1,
         extension: ".png"
       },
       stamp: {
-        data: fs.readFileSync(imagePath.stamp, {encoding: "base64"}),
+        data: renderImages ? fs.readFileSync(imagePath.stamp, {encoding: "base64"}) : imagePath.stamp,
         width: 5,
         height: 2.108,
         extension: ".png"
       },
       esvStamp: {
-        data: fs.readFileSync(imagePath.esvStamp, {encoding: "base64"}),
+        data: renderImages ? fs.readFileSync(imagePath.esvStamp, {encoding: "base64"}) : imagePath.esvStamp,
         width: 5.5705,
         height: 11.5,
         extension: ".png"
       }
     }
 
-    
+
     const buffer = await createReport({
       template: template,
       data: {
