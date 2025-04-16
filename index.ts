@@ -10,10 +10,10 @@ const rl = readline.createInterface({ input, output })
 // -------------------------------------------------------
 
 // Modify the following data
-const day = 14
-let month = "march"
+const day = 11
+let month = "april"
 const year = 2025
-const xlsFilename = "March 2025 - Valuation 90.xlsx"
+const xlsFilename = "data.xlsx"
 const imagePath = {
   dateImg: "./assets/date.png",
   signature: "./assets/signature.png",

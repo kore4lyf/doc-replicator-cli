@@ -41,6 +41,8 @@ const getHeaderIndex = ([...headers]: string[]) => {
 
   // Map index to their appropriate header name from Headers to headerIndex
   for(let headerName of headers) {
+    if(headerName === undefined) continue
+    console.log(headerName)
 
     const index = headers.indexOf(headerName)
     headerName = headerName.toLowerCase()
@@ -57,6 +59,6 @@ const getHeaderIndex = ([...headers]: string[]) => {
 const validateHeader = (headerIndex: IheaderIndex) => {
   // Ensure no header index data is undefined
   for(const headerName in headerIndex) {
-    if(headerIndex[headerName] === -1) throw new Error(`${headerIndex[headerName]} is missing or not correctly spelt in the excel sheet`)
+    if(headerIndex[headerName] === -1) throw new Error(`${headerName} is missing or not correctly spelt in the excel sheet`)
   }
 }
