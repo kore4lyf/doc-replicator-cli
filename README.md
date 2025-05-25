@@ -70,6 +70,7 @@ This tool was specifically built to automate the creation of real estate related
     ```
 
     * This executes the script, generating documents based on your template and data.
+    * Ensure you excel sheet have the following headers ("full name","property type","house number", "customer address", "serial no")
 
 ## How It Works
 

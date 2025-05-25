@@ -11,9 +11,6 @@ export const generateDocFiles = async (
   renderImages: boolean,
   headerIndex: IheaderIndex, 
   data: string[][]) => {
-
-    console.log(renderImages)
-    console.log(imagePath)
   
   // Create the reports from data
   for(const [index, row] of data.entries() ) {
@@ -30,8 +27,6 @@ export const generateDocFiles = async (
 
     
     const templatePath: string = getTemplatePath(propertyType, renderImages)
-
-    console.log(templatePath)
 
     // Load the DOCX file
     const template = fs.readFileSync(templatePath)
@@ -91,12 +86,18 @@ export const generateDocFiles = async (
       },
       cmdDelimiter: ["{", "}"]
     })
+
+    const fileName= `${rowData.fullName} - ${rowData.houseNumber}.docx`
     
-    // Write file to output path 
-    fs.writeFileSync( path.join(outputPath, `${rowData.fullName}.docx`), buffer)
-
-    console.log(`${rowData.fullName} Report generated successfully.`)
-
+    if(fs.existsSync(path.join(outputPath, fileName))) {
+       // Write file to output path 
+      fs.writeFileSync( path.join(outputPath, fileName), buffer)
+      console.log(`${rowData.fullName} Report updated successfully.`)
+      
+    } else {
+      fs.writeFileSync( path.join(outputPath, fileName), buffer)
+      console.log(`${rowData.fullName} Report generated successfully.`)
+    }
 
   }
 }
